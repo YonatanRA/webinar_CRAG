@@ -1,0 +1,9 @@
+.env
+__pycache__/
+proto
+.DS_Store
+*.ipynb_checkpoints
+*.chainlit
+chainlit.md
+memory.db
+chroma_db
