@@ -7,3 +7,4 @@ proto
 chainlit.md
 memory.db
 chroma_db
+design_bm25
