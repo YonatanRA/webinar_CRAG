@@ -78,3 +78,4 @@ Este proyecto necesita obtener una API KEY de OpenAI [aqui](https://platform.ope
     ```bash
     chainlit run front.py -w --port 8001
     ```
+
