@@ -1,9 +1,9 @@
 # Webinar CRAG
 
-Este proyecto consiste en la creación de un aplicación para la consulta a bases de datos relacionales con un agente. Este agente está compuesto de tres procesos:
-1. Creación de la query SQL según la consulta del usuario conocida la estructura de la base de datos.
-2. Ejecución de query creada.
-3. Devolución de la respuesta en lenguaje natural para un uso completamente conversacional con la base de datos.
+Este proyecto consiste en la creación de un Contextual RAG:
+1. Creación del contexto de cada chunk del PDF.
+2. Guardado en Chroma y BM25.
+3. Recuperación con ReRanker.
 
 ![crag](imgs/crag.webp)
 
