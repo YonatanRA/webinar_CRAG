@@ -6,7 +6,7 @@ from langchain.retrievers.document_compressors import FlashrankRerank, DocumentC
 import pickle
 
 
-def ensemble_retriever(collection_name: str) -> EnsembleRetriever:
+def ensemble_retriever(collection_name: str) -> ContextualCompressionRetriever:
     
     """
     Recuperación desde ChromaDB y BM25.
@@ -15,7 +15,7 @@ def ensemble_retriever(collection_name: str) -> EnsembleRetriever:
     collection_name: str, coleccion a ser usada 
 
     Return:
-    EnsembleRetriever, ChromaDB+BM25+ReRanker 
+    ContextualCompressionRetriever, ChromaDB+BM25+ReRanker 
     """
     
     embeddings = OpenAIEmbeddings()
