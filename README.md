@@ -11,28 +11,47 @@ Este proyecto consiste en la creación de un Contextual RAG:
 
 ```plaintext
 📦 webinar_crag
-├── 📁 app                         # Código de la aplicacion
+├── 📁 app                         # Código de la aplicación
 │   ├── 📁 chatbot    
 │   │   ├── 📄 __init__.py         # Convierte un directorio en un paquete
 │   │   ├── 📄 chatbot.py          # Clase del agente RAG 
 │   │   └── 📄 prompt.py           # Prompts del sistema
-│   └── 📁 tools                   # Herramientas 
-│       ├── 📄 __init__.py         # Convierte un directorio en un paquete
-│       ├── 📄 retrieve.py         # Codigo para recuperacion desde Chroma
-│       └── 📄 tools.py            # Herramientas (logger)
+│   ├── 📁 tools                   # Herramientas 
+│   │   ├── 📄 __init__.py         # Convierte un directorio en un paquete
+│   │   ├── 📄 retrieve.py         # Codigo para recuperacion desde Chroma
+│   │   └── 📄 tools.py            # Herramientas (logger)
+│   ├── 📄 front.py                # Aplicación Chainlit original
+│   └── 📄 chainlit_app.py        # Aplicación Chainlit standalone
 │
-├── 📁 data                        # Carpeta con los pdfs, se guarda aqui chroma y BM25
+├── 📁 rag                         # Módulo RAG para creación y recuperación
+│   ├── 📄 __init__.py             # Convierte un directorio en un paquete
+│   ├── 📄 create_vectordb.py      # Script para crear la base de datos vectorial
+│   └── 📄 retrieve_db.py          # Script para recuperar documentos de la BD
 │
-├── 📁 imgs                        # Carpeta con las imagenes usadas
+├── 📁 data                        # Carpeta con los PDFs, se guarda aquí Chroma y BM25
+│   ├── 📄 thinking_systems_from_donella_meadows.pdf
+│   ├── 📁 chroma_db               # Base de datos Chroma (generada)
+│   └── 📄 *_bm25                  # Archivos BM25 (generados)
+│
+├── 📁 imgs                        # Carpeta con las imágenes usadas
+│   └── 📄 crag.webp
 │
 ├── 📁 notebooks                   # Carpeta de notebooks de prueba
 │   └── 📄 CRAG.ipynb              # Jupyter notebook con todo el proceso
+│
+├── 📁 venv                        # Entorno virtual (no se versiona)
 │
 ├── 📄 .gitignore                  # Archivos y carpetas a ignorar en Git
 ├── 📄 README.md                   # Documentación principal del proyecto
 └── 📄 requirements.txt            # Dependencias y configuración 
 ```
 
+### Descripción de carpetas principales
+
+- **`app/`**: Contiene el código de la aplicación Chainlit. Incluye el chatbot, herramientas y dos versiones de la aplicación frontend.
+- **`rag/`**: Módulo RAG que contiene los scripts para crear y recuperar documentos de la base de datos vectorial.
+- **`data/`**: Almacena los PDFs de entrada y los archivos generados (Chroma DB y BM25).
+- **`notebooks/`**: Contiene el notebook Jupyter con el proceso completo de desarrollo.
 
 ## Dependencias
 
@@ -73,9 +92,25 @@ Este proyecto necesita obtener una API KEY de OpenAI [aqui](https://platform.ope
     pip install -r requirements.txt
     ```
 
-
-2. Levantar el front de chainlit de la carpeta app con el siguiente comando:
+2. Crear la base de datos vectorial desde los PDFs:
     ```bash
-    chainlit run front.py -w --port 8001
+    python rag/create_vectordb.py
+    ```
+    Esto procesará los PDFs en la carpeta `data/` y creará:
+    - Base de datos Chroma en `data/chroma_db/`
+    - Archivos BM25 en `data/`
+
+3. Levantar el front de chainlit de la carpeta app con el siguiente comando:
+    ```bash
+    # Opción 1: Usando la aplicación original
+    chainlit run app/front.py -w --port 8001
+    
+    # Opción 2: Usando la aplicación standalone
+    chainlit run app/chainlit_app.py -w --port 8001
+    ```
+
+4. (Opcional) Probar la recuperación de documentos:
+    ```bash
+    python rag/retrieve_db.py
     ```
 

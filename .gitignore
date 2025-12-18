@@ -8,3 +8,10 @@ chainlit.md
 memory.db
 chroma_db
 design_bm25
+venv/
+*.pyc
+__pycache__/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
