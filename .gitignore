@@ -6,9 +6,10 @@ proto
 *.chainlit
 chainlit.md
 memory.db
-chroma_db
-design_bm25
+data/chroma_db/
+data/*_bm25
 venv/
+/.venv/
 *.pyc
 __pycache__/
 .pytest_cache/
