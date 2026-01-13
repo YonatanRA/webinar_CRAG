@@ -19,7 +19,7 @@ from pathlib import Path
 
 # Add parent directory to path to import crag module
 sys.path.append(str(Path(__file__).parent.parent))
-from crag.retrieve_db import ensemble_retriever
+from rag.retrieve_db import ensemble_retriever
 
 # Load environment variables
 load_dotenv()
