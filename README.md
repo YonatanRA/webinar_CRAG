@@ -21,9 +21,9 @@ Este proyecto consiste en la creación de un Contextual RAG:
 │   │   ├── 📄 retrieve.py         # Codigo para recuperacion desde Chroma
 │   │   └── 📄 tools.py            # Herramientas (logger)
 │   ├── 📄 front.py                # Aplicación Chainlit original
-│   └── 📄 chainlit_app.py        # Aplicación Chainlit standalone
+│   └── 📄 chainlit_app.py         # Aplicación Chainlit standalone
 │
-├── 📁 rag                         # Módulo RAG para creación y recuperación
+├── 📁 crag                        # Módulo CRAG para creación y recuperación
 │   ├── 📄 __init__.py             # Convierte un directorio en un paquete
 │   ├── 📄 create_vectordb.py      # Script para crear la base de datos vectorial
 │   └── 📄 retrieve_db.py          # Script para recuperar documentos de la BD
@@ -49,7 +49,7 @@ Este proyecto consiste en la creación de un Contextual RAG:
 ### Descripción de carpetas principales
 
 - **`app/`**: Contiene el código de la aplicación Chainlit. Incluye el chatbot, herramientas y dos versiones de la aplicación frontend.
-- **`rag/`**: Módulo RAG que contiene los scripts para crear y recuperar documentos de la base de datos vectorial.
+- **`crag/`**: Módulo CRAG que contiene los scripts para crear y recuperar documentos de la base de datos vectorial.
 - **`data/`**: Almacena los PDFs de entrada y los archivos generados (Chroma DB y BM25).
 - **`notebooks/`**: Contiene el notebook Jupyter con el proceso completo de desarrollo.
 
